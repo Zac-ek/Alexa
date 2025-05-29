@@ -31,9 +31,9 @@ router.get('/:id', (req, res) => {
 
 // Actualizar una tarea
 router.put('/:id', (req, res) => {
-  const { tarea, estatus } = req.body;
-  const query = 'UPDATE tareas SET tarea = ?, estatus = ? WHERE id = ?';
-  db.query(query, [tarea, estatus, req.params.id], (err) => {
+  const { estatus } = req.body;
+  const query = 'UPDATE tareas SET estatus = ? WHERE id = ?';
+  db.query(query, [estatus, req.params.id], (err) => {
     if (err) return res.status(500).send(err);
     res.send('Tarea actualizada');
   });
