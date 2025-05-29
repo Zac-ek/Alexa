@@ -32,10 +32,13 @@ router.get('/:id', (req, res) => {
 // Actualizar una tarea
 router.put('/:id', (req, res) => {
   const { estatus } = req.body;
+  const id = req.params.id;
   const query = 'UPDATE tareas SET estatus = ? WHERE id = ?';
   db.query(query, [estatus, req.params.id], (err) => {
     if (err) return res.status(500).send(err);
+    console.log(`[${new Date().toISOString()}] ➡️ Tarea actualizada: ID = ${id}, Estatus = ${estatus}`);
     res.send('Tarea actualizada');
+    return;
   });
 });
 
