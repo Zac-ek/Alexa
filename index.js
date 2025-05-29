@@ -1,11 +1,13 @@
 require('dotenv').config(); // <-- también aquí
 
 const express = require('express');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const tareasRoutes = require('./routes/tareas');
 
 const app = express();
+app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 
